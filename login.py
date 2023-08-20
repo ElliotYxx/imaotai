@@ -52,10 +52,16 @@ if __name__ == '__main__':
 
     while 1:
         process.init_headers()
-        location_select: dict = get_location()
-        province = location_select['province']
-        city = location_select['city']
-        location: str = location_select['location']
+        # location_select: dict = get_location()
+        # province = location_select['province']
+        # city = location_select['city']
+        # location: str = location_select['location']
+        privince = '上海市'
+        city = '上海市'
+        lat = '31.213796'
+        lng = '121.360117'
+
+        # 地址写死
 
         mobile = input("输入手机号[13812341234]:").lstrip().rstrip()
         process.get_vcode(mobile)
@@ -64,12 +70,17 @@ if __name__ == '__main__':
         if mobile not in sections:
             config.add_section(mobile)  # 首先添加一个新的section
 
-        config.set(mobile, 'province', str(province))
-        config.set(mobile, 'city', str(city))
+        # config.set(mobile, 'province', str(province))
+        config.set(mobile, 'province', privince)
+        # config.set(mobile, 'city', str(city))
+        config.set(mobile, 'city', city)
+
         config.set(mobile, 'token', str(token))
         config.set(mobile, 'userId', str(userId))
-        config.set(mobile, 'lat', location.split(',')[1])
-        config.set(mobile, 'lng', location.split(',')[0])
+        # config.set(mobile, 'lat', location.split(',')[1])
+        # config.set(mobile, 'lng', location.split(',')[0])
+        config.set(mobile, 'lat', lat)
+        config.set(mobile, 'lng', lng)
         config.write(open(path, 'w+'))  # 保存数据
         condition = input(f"是否继续添加账号[Y/N]:").lstrip().rstrip()
         condition = condition.lower()
