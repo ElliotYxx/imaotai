@@ -13,7 +13,7 @@ ITEM_CODES = ['10213', '10214']
 # 例如： PUSH_TOKEN = '123456'
 ########################
 # 不填不推送消息，一对一发送
-PUSH_TOKEN = None
+PUSH_TOKEN = '60056febc89449e9bc731b52f5b08c8c'
 ########################
 
 # credentials 路径，例如：CREDENTIALS_PATH = /home/user/.imoutai/credentials
@@ -28,5 +28,5 @@ CREDENTIALS_PATH = None
 # 预约本市出货量最大的门店
 MAX_ENABLED = True
 # 预约你的位置附近门店
-DISTANCE_ENABLED = False
+DISTANCE_ENABLED = True
 ########################
