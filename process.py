@@ -19,10 +19,14 @@ SALT = '2af72f100c356273d46284f6fd1dfc08'
 
 CURRENT_TIME = str(int(time.time() * 1000))
 headers = {}
-# mt_version = "".join(re.findall('new__latest__version">(.*?)</p>',
-#                                 requests.get('https://apps.apple.com/cn/app/i%E8%8C%85%E5%8F%B0/id1600482450').text,
-#                                 re.S)).replace('版本 ', '')
-mt_version = '1.4.6'
+mt_version = "".join(re.findall('new__latest__version">(.*?)</p>',
+                                requests.get('https://apps.apple.com/cn/app/i%E8%8C%85%E5%8F%B0/id1600482450').text,
+                                re.S)).replace('版本 ', '')
+
+fIndex = mt_version.find('.') - 1
+
+version = mt_version[fIndex:]
+
 
 header_context = f'''
 MT-Lat: 28.499562
@@ -58,7 +62,7 @@ def init_headers(user_id: str = '1', token: str = '2', lat: str = '28.499562', l
     dict.update(headers, {"MT-Token": token})
     dict.update(headers, {"MT-Lat": lat})
     dict.update(headers, {"MT-Lng": lng})
-    dict.update(headers, {"MT-APP-Version": mt_version})
+    dict.update(headers, {"MT-APP-Version": version})
 
 
 def signature(data: dict):
@@ -79,7 +83,7 @@ print()
 def get_vcode(mobile: str):
     params = {'mobile': mobile}
     md5 = signature(params)
-    dict.update(params, {'md5': md5, "timestamp": CURRENT_TIME, 'MT-APP-Version': mt_version})
+    dict.update(params, {'md5': md5, "timestamp": CURRENT_TIME, 'MT-APP-Version': version})
     responses = requests.post("https://app.moutai519.com.cn/xhr/front/user/register/vcode", json=params,
                               headers=headers)
     if responses.status_code != 200:
@@ -90,7 +94,7 @@ def get_vcode(mobile: str):
 def login(mobile: str, v_code: str):
     params = {'mobile': mobile, 'vCode': v_code, 'ydToken': '', 'ydLogId': ''}
     md5 = signature(params)
-    dict.update(params, {'md5': md5, "timestamp": CURRENT_TIME, 'MT-APP-Version': mt_version})
+    dict.update(params, {'md5': md5, "timestamp": CURRENT_TIME, 'MT-APP-Version': version})
     responses = requests.post("https://app.moutai519.com.cn/xhr/front/user/register/login", json=params,
                               headers=headers)
     if responses.status_code != 200:
@@ -257,7 +261,7 @@ def get_map(lat: str = '28.499562', lng: str = '102.182324'):
         'Client-User-Agent': 'iOS;16.0.1;Apple;iPhone 14 ProMax',
         'MT-R': 'clips_OlU6TmFRag5rCXwbNAQ/Tz1SKlN8THcecBp/HGhHdw==',
         'Origin': 'https://h5.moutai519.com.cn',
-        'MT-APP-Version': mt_version,
+        'MT-APP-Version': version,
         'MT-Request-ID': f'{int(time.time() * 1000)}{random.randint(1111111, 999999999)}{int(time.time() * 1000)}',
         'Accept-Language': 'zh-CN,zh-Hans;q=1',
         'MT-Device-ID': f'{int(time.time() * 1000)}{random.randint(1111111, 999999999)}{int(time.time() * 1000)}',
