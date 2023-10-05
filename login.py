@@ -52,14 +52,14 @@ if __name__ == '__main__':
 
     while 1:
         process.init_headers()
-        # location_select: dict = get_location()
-        # province = location_select['province']
-        # city = location_select['city']
-        # location: str = location_select['location']
-        privince = '上海市'
-        city = '上海市'
-        lat = '31.213796'
-        lng = '121.360117'
+        location_select: dict = get_location()
+        province = location_select['province']
+        city = location_select['city']
+        location: str = location_select['location']
+        privince = '福建省'
+        city = '福州市'
+        lat = '26.07467'
+        lng = '119.32495'
 
         # 地址写死
 
