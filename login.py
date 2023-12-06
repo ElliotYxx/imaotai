@@ -69,18 +69,13 @@ if __name__ == '__main__':
         token, userId = process.login(mobile, code)
         if mobile not in sections:
             config.add_section(mobile)  # 首先添加一个新的section
-
-        # config.set(mobile, 'province', str(province))
-        config.set(mobile, 'province', privince)
-        # config.set(mobile, 'city', str(city))
-        config.set(mobile, 'city', city)
+            config.set(mobile, 'province', privince)
+            config.set(mobile, 'city', city)
+            config.set(mobile, 'lat', lat)
+            config.set(mobile, 'lng', lng)
 
         config.set(mobile, 'token', str(token))
         config.set(mobile, 'userId', str(userId))
-        # config.set(mobile, 'lat', location.split(',')[1])
-        # config.set(mobile, 'lng', location.split(',')[0])
-        config.set(mobile, 'lat', lat)
-        config.set(mobile, 'lng', lng)
         config.write(open(path, 'w+'))  # 保存数据
         condition = input(f"是否继续添加账号[Y/N]:").lstrip().rstrip()
         condition = condition.lower()
