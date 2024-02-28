@@ -56,12 +56,16 @@ if __name__ == '__main__':
         # province = location_select['province']
         # city = location_select['city']
         # location: str = location_select['location']
-        privince = '上海市'
-        city = '上海市'
-        lat = '31.213796'
-        lng = '121.360117'
+        # privince = '上海市'
+        # city = '上海市'
+        # lat = '31.213796'
+        # lng = '121.360117'
 
         # 地址写死
+        privince = input("输入省份[福建省]:").lstrip().rstrip()
+        city = input("输入城市[福州市]:").lstrip().rstrip()
+        lat = input("输入经度[26.024012]:").lstrip().rstrip()
+        lng = input("输入维度[119.282268]:").lstrip().rstrip()
 
         mobile = input("输入手机号[13812341234]:").lstrip().rstrip()
         process.get_vcode(mobile)
