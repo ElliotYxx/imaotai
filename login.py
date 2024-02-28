@@ -64,8 +64,8 @@ if __name__ == '__main__':
         # 地址写死
         privince = input("输入省份[福建省]:").lstrip().rstrip()
         city = input("输入城市[福州市]:").lstrip().rstrip()
-        lat = input("输入经度[26.024012]:").lstrip().rstrip()
-        lng = input("输入维度[119.282268]:").lstrip().rstrip()
+        lat = input("输入纬度[26.024012]:").lstrip().rstrip()
+        lng = input("输入经度[119.282268]:").lstrip().rstrip()
 
         mobile = input("输入手机号[13812341234]:").lstrip().rstrip()
         process.get_vcode(mobile)
