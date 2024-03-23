@@ -16,9 +16,9 @@ ITEM_CODES = ['10941', '10942']
 PUSH_TOKEN = '60056febc89449e9bc731b52f5b08c8c'
 ########################
 
-# credentials 路径，例如：CREDENTIALS_PATH = /home/user/.imoutai/credentials
+# credentials 路径，例如：CREDENTIALS_PATH = /home/user/.imaotai/credentials
 # 不配置，使用默认路径，在宿主目录
-# 例如： CREDENTIALS_PATH = '/home/user/.imautai/credentials'
+# 例如： CREDENTIALS_PATH = '/home/user/.imaotai/credentials'
 ########################
 CREDENTIALS_PATH = None
 ########################
@@ -30,3 +30,35 @@ MAX_ENABLED = False
 # 预约你的位置附近门店
 DISTANCE_ENABLED = True
 ########################
+
+
+CITY_MAP = {
+    # 1 上海
+    "1": {
+        "province_name":"上海市",
+        "city_name":"上海市",
+        "lat":"31.213796",
+        "lng":"121.360117"
+    },
+    # 2 合肥
+    "2": {
+        "province_name":"安徽省",
+        "city_name":"合肥市",
+        "lat":"31.903006",
+        "lng":"117.23848"
+    },
+    # 3 福州
+    "3": {
+        "province_name":"福建省",
+        "city_name":"福州市",
+        "lat":"26.024012",
+        "lng":"119.282268"
+    },
+    # 4 贵阳
+    "4": {
+        "province_name":"贵州省",
+        "city_name":"贵阳市",
+        "lat":"26.612832",
+        "lng":"106.765878"
+    }
+}

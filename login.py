@@ -52,20 +52,12 @@ if __name__ == '__main__':
 
     while 1:
         process.init_headers()
-        # location_select: dict = get_location()
-        # province = location_select['province']
-        # city = location_select['city']
-        # location: str = location_select['location']
-        # privince = '上海市'
-        # city = '上海市'
-        # lat = '31.213796'
-        # lng = '121.360117'
-
-        # 地址写死
-        privince = input("输入省份[福建省]:").lstrip().rstrip()
-        city = input("输入城市[福州市]:").lstrip().rstrip()
-        lat = input("输入纬度[26.024012]:").lstrip().rstrip()
-        lng = input("输入经度[119.282268]:").lstrip().rstrip()
+        location_code = input("输入地址代码[1.上海市 2.合肥市 3.福州市 4.贵阳市]:").lstrip().rstrip()
+        location = cf.CITY_MAP.get(location_code)
+        province = location.get('province_name')
+        city = location.get('city_name')
+        lat = location.get('lat')
+        lng = location.get('lng')
 
         mobile = input("输入手机号[13812341234]:").lstrip().rstrip()
         process.get_vcode(mobile)
@@ -73,7 +65,7 @@ if __name__ == '__main__':
         token, userId = process.login(mobile, code)
         if mobile not in sections:
             config.add_section(mobile)  # 首先添加一个新的section
-            config.set(mobile, 'province', privince)
+            config.set(mobile, 'province', province)
             config.set(mobile, 'city', city)
             config.set(mobile, 'lat', lat)
             config.set(mobile, 'lng', lng)
