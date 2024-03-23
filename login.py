@@ -22,7 +22,7 @@ def get_credentials_path():
 
 
 path = get_credentials_path()
-config.read(get_credentials_path())
+config.read(get_credentials_path(), "utf-8")
 sections = config.sections()
 
 
